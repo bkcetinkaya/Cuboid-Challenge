@@ -13,6 +13,12 @@ public class DailyReward : MonoBehaviour
 
     [SerializeField]
     private Button claimRewardButton;
+
+    [SerializeField]
+    private Button DailyRewardIconButton;
+
+    private Transform RewardUI;
+
     
     [Space]
 
@@ -28,7 +34,8 @@ public class DailyReward : MonoBehaviour
 
     private void Start()
     {
-
+        RewardUI = GameObject.FindGameObjectWithTag("RewardUI").GetComponent<Transform>();
+        SetRewardUI(false);
 
         if (!PlayerPrefs.HasKey("RewardClaimable"))
         {
@@ -38,7 +45,7 @@ public class DailyReward : MonoBehaviour
 
         if (PlayerPrefs.GetInt("RewardClaimable") == 0)
         {
-            
+            SetDailyRewardIconColor(Color.gray);
             SetClaimRewardButton(false);
             SetCountDownText(true);
             SetTimeDifference();
@@ -46,11 +53,19 @@ public class DailyReward : MonoBehaviour
         }
         if (PlayerPrefs.GetInt("RewardClaimable") == 1)
         {
-            
+            SetDailyRewardIconColor(Color.white);
             claimRewardButton.interactable = true;
             SetCountDownText(false);
             StopCoroutine(StartCountdown());
         }    
+
+    }
+
+    private void SetDailyRewardIconColor(Color color)
+    {
+        var colors = DailyRewardIconButton.colors;
+        colors.normalColor = color;
+        DailyRewardIconButton.colors = colors;
 
     }
 
@@ -118,6 +133,8 @@ public class DailyReward : MonoBehaviour
     {
         PlayerPrefs.SetInt("RewardClaimable", 1);
         PlayerPrefs.Save();
+
+        SetDailyRewardIconColor(Color.white);
     }
 
     private void SetRewardUnClaimable()
@@ -137,8 +154,14 @@ public class DailyReward : MonoBehaviour
     {
         SetRewardUnClaimable();
         SetClaimRewardButton(false);
+        SetDailyRewardIconColor(Color.gray);
         SetCountDownText(true);
         SetTimeDifference();
         StartCoroutine(StartCountdown());
+    }
+
+    public void SetRewardUI(bool value)
+    {
+        RewardUI.gameObject.SetActive(value);
     }
 }

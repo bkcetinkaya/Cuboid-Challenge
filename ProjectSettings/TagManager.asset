@@ -24,6 +24,7 @@ TagManager:
   - MoveButtons
   - Level Title
   - WinColliderH
+  - RewardUI
   layers:
   - Default
   - TransparentFX
