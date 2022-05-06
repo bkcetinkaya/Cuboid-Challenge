@@ -29,7 +29,12 @@ public class SceneController : MonoBehaviour
 
     private void RestartScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (CheckIfPlayerHasEnoughHP())
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        else
+        {
+            SceneManager.LoadScene("LevelsMenu");
+        }
     }
 
     public void NextLevel()
@@ -37,24 +42,39 @@ public class SceneController : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         
 
-        if(scene.buildIndex >= 49)
+        if(scene.buildIndex >= 32)
         {
-
 
             LoadLevelWithName("LevelsMenu");
             return;
         }
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (CheckIfPlayerHasEnoughHP())
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void LoadLevel(int index)
     {
-        SceneManager.LoadScene(index);
+        if (CheckIfPlayerHasEnoughHP())
+            SceneManager.LoadScene(index);
     }
 
     public void LoadLevelWithName(string levelName)
     {
-        SceneManager.LoadScene(levelName);
+        if (CheckIfPlayerHasEnoughHP())
+            SceneManager.LoadScene(levelName);
+    }
+
+    private bool CheckIfPlayerHasEnoughHP()
+    {
+        var health = PlayerHealthController.Instance.GetPlayerHealth();
+
+        if (health >= 1)
+        {
+            return true;
+        }
+
+        // player has 0 HP
+        return false;
     }
 }

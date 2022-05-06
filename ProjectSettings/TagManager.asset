@@ -25,6 +25,7 @@ TagManager:
   - Level Title
   - WinColliderH
   - RewardUI
+  - HeartsUIManager
   layers:
   - Default
   - TransparentFX

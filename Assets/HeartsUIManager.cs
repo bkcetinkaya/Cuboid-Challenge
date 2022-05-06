@@ -10,9 +10,14 @@ public class HeartsUIManager : MonoBehaviour
 
     private int HealthValue;
 
+    [SerializeField]
+    private GameObject NotEnoughHPUI;
+
     private void Start()
     {
+        NotEnoughHPUI.SetActive(true);
         UpdateUI();
+        
     }
 
     public void UpdateUI()
@@ -20,8 +25,11 @@ public class HeartsUIManager : MonoBehaviour
         ResetUI();
         HealthValue = PlayerHealthController.Instance.GetPlayerHealth();
 
+        Debug.Log("Current HEALTH: " + HealthValue);
+
         if (HealthValue == 0)
         {
+            NotEnoughHPUI.SetActive(true);
             return;
         }
 
@@ -29,6 +37,7 @@ public class HeartsUIManager : MonoBehaviour
         {
             hearts[i].fillAmount = 1f;
         }
+        NotEnoughHPUI.SetActive(false);
     }
 
     private void ResetUI()

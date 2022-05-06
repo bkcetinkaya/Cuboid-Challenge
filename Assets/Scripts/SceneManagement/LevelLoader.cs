@@ -31,12 +31,41 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadLevelWithName(string levelName)
     {
-        SceneManager.LoadScene(levelName);
+        if(levelName.Equals("Shop Menu"))
+        {
+            SceneManager.LoadScene(levelName);
+            return;
+        }
+
+        if (levelName.Equals("LevelsMenu"))
+        {
+            SceneManager.LoadScene(levelName);
+            return;
+        }
+
+        if (CheckIfPlayerHasEnoughHP())
+            SceneManager.LoadScene(levelName);
     }
 
     public void LoadLevelWithIndex(int index)
     {
-        SceneManager.LoadScene(index);
+        
+
+        if(CheckIfPlayerHasEnoughHP())
+            SceneManager.LoadScene(index);
+    }
+
+    private bool CheckIfPlayerHasEnoughHP()
+    {
+        var health = PlayerHealthController.Instance.GetPlayerHealth();
+
+        if(health >= 1)
+        {
+            return true;
+        }
+
+        // player has 0 HP
+        return false;
     }
 
 }

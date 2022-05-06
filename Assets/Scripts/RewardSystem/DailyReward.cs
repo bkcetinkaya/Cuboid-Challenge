@@ -19,6 +19,7 @@ public class DailyReward : MonoBehaviour
 
     private Transform RewardUI;
 
+    private HeartsUIManager heartsUIManager;
     
     [Space]
 
@@ -35,6 +36,7 @@ public class DailyReward : MonoBehaviour
     private void Start()
     {
         RewardUI = GameObject.FindGameObjectWithTag("RewardUI").GetComponent<Transform>();
+        heartsUIManager = GameObject.FindGameObjectWithTag("HeartsUIManager").GetComponent<HeartsUIManager>();
         SetRewardUI(false);
 
         if (!PlayerPrefs.HasKey("RewardClaimable"))
@@ -145,7 +147,7 @@ public class DailyReward : MonoBehaviour
     public void ClaimReward()
     {
         PlayerHealthController.Instance.SetPlayerHealth(3);
-
+        heartsUIManager.UpdateUI();
 
         ResetTimer();
     }
