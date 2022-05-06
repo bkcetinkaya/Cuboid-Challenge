@@ -98,6 +98,7 @@ public class DailyReward : MonoBehaviour
         SetClaimRewardButton(true);
         SetCountDownText(false);
         SetRewardClaimable();
+      
     }
 
    
@@ -116,13 +117,23 @@ public class DailyReward : MonoBehaviour
     private void SetRewardClaimable()
     {
         PlayerPrefs.SetInt("RewardClaimable", 1);
+        PlayerPrefs.Save();
     }
 
     private void SetRewardUnClaimable()
     {
         PlayerPrefs.SetInt("RewardClaimable", 0);
+        PlayerPrefs.Save();
     }
     public void ClaimReward()
+    {
+        PlayerHealthController.Instance.SetPlayerHealth(3);
+
+
+        ResetTimer();
+    }
+
+    private void ResetTimer()
     {
         SetRewardUnClaimable();
         SetClaimRewardButton(false);

@@ -800,7 +800,7 @@ MonoBehaviour:
   timeLeftText: {fileID: 163766952}
   claimRewardButton: {fileID: 766719240}
   rewardHour: 12
-  rewardMinute: 30
+  rewardMinute: 59
 --- !u!4 &914083053
 Transform:
   m_ObjectHideFlags: 0
