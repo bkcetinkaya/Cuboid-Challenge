@@ -27,7 +27,6 @@ public class DailyReward : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-
         if (PlayerPrefs.GetInt("RewardClaimable") == 0)
         {
             claimRewardButton.interactable = false;
@@ -40,10 +39,7 @@ public class DailyReward : MonoBehaviour
             
             claimRewardButton.interactable = true;
             StopCoroutine(StartCountdown());
-        }
-
-
-     
+        }    
 
     }
 
@@ -56,18 +52,31 @@ public class DailyReward : MonoBehaviour
     private TimeSpan CalculateTimeDifference()
     {
         DateTime currentTime = DateTime.Now;
-        DateTime rewardTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, 21,42, 50);
+        DateTime rewardTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, 12,13, 00);
 
 
-        TimeSpan offsetTime = new TimeSpan(24, 00, 00);
+        TimeSpan offsetTime = TimeSpan.FromHours(24);
 
+        Debug.Log(offsetTime.TotalSeconds);
         TimeSpan diff = currentTime.Subtract(rewardTime);
+       
+        if(diff < TimeSpan.Zero)
+        {
+            Debug.Log("Negative Value!");
 
-        TimeSpan result = offsetTime - diff;
+            return diff.Duration();
+        }
+
+        TimeSpan result = offsetTime.Subtract(diff);
+        //Debug.Log(result);
+
+
+        return result;
+
+
 
         
 
-        return result;
     }
 
     public IEnumerator StartCountdown()
@@ -84,10 +93,6 @@ public class DailyReward : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-
-    }
 
     public void ClaimReward()
     {
