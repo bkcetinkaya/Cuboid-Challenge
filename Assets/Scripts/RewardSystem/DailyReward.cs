@@ -13,6 +13,15 @@ public class DailyReward : MonoBehaviour
 
     [SerializeField]
     private Button claimRewardButton;
+    
+    [Space]
+
+    [SerializeField]
+    [Tooltip("in 24h format for example: 12 or 24 or 09")]
+    private int rewardHour;
+
+    [SerializeField]
+    private int rewardMinute;
 
     TimeSpan _result;
     double currCountdownValue ;
@@ -29,8 +38,9 @@ public class DailyReward : MonoBehaviour
 
         if (PlayerPrefs.GetInt("RewardClaimable") == 0)
         {
-            claimRewardButton.interactable = false;
             
+            SetClaimRewardButton(false);
+            SetCountDownText(true);
             SetTimeDifference();
             StartCoroutine(StartCountdown());
         }
@@ -38,6 +48,7 @@ public class DailyReward : MonoBehaviour
         {
             
             claimRewardButton.interactable = true;
+            SetCountDownText(false);
             StopCoroutine(StartCountdown());
         }    
 
@@ -52,14 +63,12 @@ public class DailyReward : MonoBehaviour
     private TimeSpan CalculateTimeDifference()
     {
         DateTime currentTime = DateTime.Now;
-        DateTime rewardTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, 12,13, 00);
-
+        DateTime rewardTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, rewardHour,rewardMinute, 00);
 
         TimeSpan offsetTime = TimeSpan.FromHours(24);
-
-        Debug.Log(offsetTime.TotalSeconds);
         TimeSpan diff = currentTime.Subtract(rewardTime);
        
+        //if time difference is negative
         if(diff < TimeSpan.Zero)
         {
             Debug.Log("Negative Value!");
@@ -68,21 +77,15 @@ public class DailyReward : MonoBehaviour
         }
 
         TimeSpan result = offsetTime.Subtract(diff);
-        //Debug.Log(result);
-
-
+ 
         return result;
-
-
-
-        
 
     }
 
     public IEnumerator StartCountdown()
     {
         
-        while (currCountdownValue > 0)
+        while (currCountdownValue > 0.9f)
         {
             Debug.Log("Countdown: " + currCountdownValue);
             yield return new WaitForSeconds(1.0f);
@@ -91,11 +94,40 @@ public class DailyReward : MonoBehaviour
 
             timeLeftText.text = TimeSpan.FromSeconds(currCountdownValue).ToString(@"hh\:mm\:ss");
         }
+
+        SetClaimRewardButton(true);
+        SetCountDownText(false);
+        SetRewardClaimable();
     }
 
+   
 
-    public void ClaimReward()
+    private void SetClaimRewardButton(bool value)
     {
         
+        claimRewardButton.interactable= value;
+       
+    }
+
+    private void SetCountDownText(bool value)
+    {
+        timeLeftText.gameObject.SetActive(value);
+    }
+    private void SetRewardClaimable()
+    {
+        PlayerPrefs.SetInt("RewardClaimable", 1);
+    }
+
+    private void SetRewardUnClaimable()
+    {
+        PlayerPrefs.SetInt("RewardClaimable", 0);
+    }
+    public void ClaimReward()
+    {
+        SetRewardUnClaimable();
+        SetClaimRewardButton(false);
+        SetCountDownText(true);
+        SetTimeDifference();
+        StartCoroutine(StartCountdown());
     }
 }
