@@ -24,7 +24,7 @@ public class DailyReward : MonoBehaviour
     [Space]
 
     [SerializeField]
-    [Tooltip("in 24h format for example: 12 or 24 or 09")]
+    [Tooltip("in 24h format for example: 12 or 24 or 09 etc..")]
     private int rewardHour;
 
     [SerializeField]
@@ -35,6 +35,10 @@ public class DailyReward : MonoBehaviour
 
     private void Start()
     {
+
+        CheckIfRewardWasAvaliableWhenGameWasClosed();
+
+
         RewardUI = GameObject.FindGameObjectWithTag("RewardUI").GetComponent<Transform>();
         heartsUIManager = GameObject.FindGameObjectWithTag("HeartsUIManager").GetComponent<HeartsUIManager>();
         SetRewardUI(false);
@@ -61,6 +65,21 @@ public class DailyReward : MonoBehaviour
             StopCoroutine(StartCountdown());
         }    
 
+    }
+
+    private void CheckIfRewardWasAvaliableWhenGameWasClosed()
+    {
+        TimeSpan diff = CalculateTimeDifference();
+
+        int secs = (int)diff.TotalSeconds;
+
+        int _lastTimeSecs = PlayerPrefs.GetInt("LastTime");
+
+        
+        if(secs > _lastTimeSecs)
+        {
+            SetRewardClaimable();
+        }
     }
 
     private void SetDailyRewardIconColor(Color color)
@@ -165,5 +184,18 @@ public class DailyReward : MonoBehaviour
     public void SetRewardUI(bool value)
     {
         RewardUI.gameObject.SetActive(value);
+    }
+
+    private void OnApplicationQuit()
+    {
+        TimeSpan currDiff = CalculateTimeDifference();
+
+        int seconds = (int)currDiff.TotalSeconds;
+
+        PlayerPrefs.SetInt("LastTime", seconds);
+        PlayerPrefs.Save();
+
+        Debug.Log(seconds);
+
     }
 }
