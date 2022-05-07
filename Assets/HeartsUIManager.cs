@@ -7,7 +7,7 @@ public class HeartsUIManager : MonoBehaviour
 {
     [SerializeField]
     private Image[] hearts;
-
+    
     private int HealthValue;
 
     [SerializeField]

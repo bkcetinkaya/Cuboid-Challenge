@@ -906,8 +906,8 @@ MonoBehaviour:
   timeLeftText: {fileID: 1629245229}
   claimRewardButton: {fileID: 979475409}
   DailyRewardIconButton: {fileID: 683590690}
-  rewardHour: 16
-  rewardMinute: 32
+  rewardHour: 11
+  rewardMinute: 22
 --- !u!4 &2048143657
 Transform:
   m_ObjectHideFlags: 0
@@ -1015,6 +1015,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2048143656}
+    - target: {fileID: 422278290000257572, guid: ff9c0c6d0d827754bb3e5d9329959412, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 422278290000257572, guid: ff9c0c6d0d827754bb3e5d9329959412, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 422278290000257573, guid: ff9c0c6d0d827754bb3e5d9329959412, type: 3}
+      propertyPath: m_text
+      value: Not Enough HP
+      objectReference: {fileID: 0}
+    - target: {fileID: 422278290000257573, guid: ff9c0c6d0d827754bb3e5d9329959412, type: 3}
+      propertyPath: m_fontSize
+      value: 32.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 422278290000257573, guid: ff9c0c6d0d827754bb3e5d9329959412, type: 3}
+      propertyPath: m_fontStyle
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 422278291330064326, guid: ff9c0c6d0d827754bb3e5d9329959412, type: 3}
       propertyPath: NotEnoughHPUI
       value: 

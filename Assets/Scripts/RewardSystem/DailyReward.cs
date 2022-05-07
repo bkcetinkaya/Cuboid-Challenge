@@ -107,7 +107,7 @@ public class DailyReward : MonoBehaviour
         //if time difference is negative
         if(diff < TimeSpan.Zero)
         {
-            Debug.Log("Negative Value!");
+           
 
             return diff.Duration();
         }
@@ -123,7 +123,7 @@ public class DailyReward : MonoBehaviour
         
         while (currCountdownValue > 0.9f)
         {
-            Debug.Log("Countdown: " + currCountdownValue);
+           
             yield return new WaitForSeconds(1.0f);
             currCountdownValue--;
 
