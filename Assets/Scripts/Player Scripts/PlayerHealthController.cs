@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,14 @@ public class PlayerHealthController : MonoBehaviour
 
     public int Health { get; set; }
 
+    private void OnGUI()
+    {
+        if (GUI.Button(new Rect(200, 50, 250, 50), "Refill HP"))
+        {
+            SetPlayerHealth(3);
+        }
+           
+    }
 
     private void Awake()
     {
@@ -61,6 +70,7 @@ public class PlayerHealthController : MonoBehaviour
         }
         PlayerPrefs.SetInt("Health", Health);
         PlayerPrefs.Save();
+        
     }
 
     public int GetPlayerHealth()

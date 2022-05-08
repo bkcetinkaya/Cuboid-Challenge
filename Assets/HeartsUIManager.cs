@@ -17,8 +17,12 @@ public class HeartsUIManager : MonoBehaviour
     {
         NotEnoughHPUI.SetActive(true);
         UpdateUI();
+
+
         
     }
+
+   
 
     public void UpdateUI()
     {

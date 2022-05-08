@@ -10,21 +10,17 @@ public class AdsManager : MonoBehaviour
 
     private RewardedAd rewardedAd;
     private HeartsUIManager heartsUIManager;
-
-    
-    private Transform OutOfLivesUI;
+ 
 
     // Start is called before the first frame update
     void Start()
     {
 
-        
-        OutOfLivesUI = GameObject.FindGameObjectWithTag("OOL").GetComponent<Transform>();
         heartsUIManager = GameObject.FindGameObjectWithTag("HeartsUIManager").GetComponent<HeartsUIManager>();
         rewardedAd = new RewardedAd("ca-app-pub-3940256099942544/5224354917");
         rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
-        OutOfLivesUI.gameObject.SetActive(false);
+        
     }
 
     private void LoadAd()

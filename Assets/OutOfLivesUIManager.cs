@@ -1,34 +1,55 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OutOfLivesUIManager : MonoBehaviour
 {
-    private GameObject OutOfLivesUI;
+    private DieController _dieController;
 
-    public static OutOfLivesUIManager Instance { get; private set; }
+    private string _currentSceneName;
+
 
     private void Awake()
     {
-        if (Instance != null)
+
+        _currentSceneName = SceneManager.GetActiveScene().name;
+        if (!_currentSceneName.Equals("LevelsMenu") && !_currentSceneName.Equals("Shop Menu"))
         {
-            Destroy(this);
+            _dieController = GameObject.FindGameObjectWithTag("Border").GetComponent<DieController>();
+            _dieController.OnPlayerDied += ShowOutOfLivesUI;
         }
-        else
+    }
+    private void Start()
+    {
+        
+
+        
+        
+        if (isPlayerHpZero() && !_currentSceneName.Equals("LevelsMenu") && _currentSceneName.Equals("Shop Menu"))
         {
-            Instance = this;
+            
+            ShowOutOfLivesUI();
         }
 
-        DontDestroyOnLoad(this);
+        HideUI();
     }
 
-    void Start()
+    private void HideUI()
     {
-        OutOfLivesUI = GameObject.FindGameObjectWithTag("OOL");
-
-        if (isPlayerHpZero())
+        foreach (Transform item in transform)
         {
-            ShowOutOfLivesUI();
+
+            if (item.gameObject.CompareTag("OOL"))
+            {
+
+                continue;
+            }
+
+            item.gameObject.SetActive(false);
+
+
         }
     }
 
@@ -46,7 +67,19 @@ public class OutOfLivesUIManager : MonoBehaviour
 
     private void ShowOutOfLivesUI()
     {
-        OutOfLivesUI.SetActive(true);
+        foreach (Transform item in transform)
+        {
+
+            if (item.gameObject.CompareTag("OOL"))
+            {
+                
+                continue;
+            }
+
+            item.gameObject.SetActive(true);
+
+
+        }
     }
 
 }

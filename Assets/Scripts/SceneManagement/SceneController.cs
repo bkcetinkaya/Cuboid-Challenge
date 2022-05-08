@@ -8,16 +8,16 @@ public class SceneController : MonoBehaviour
 {
     [SerializeField]
     private DieController[] _dieColliders;
-    private GameObject OutOfLivesUI;
+    
     private HeartsUIManager heartsUIManager;
 
     private void Start()
     {
 
         heartsUIManager = GameObject.FindGameObjectWithTag("HeartsUIManager").GetComponent<HeartsUIManager>();
-        OutOfLivesUI = GameObject.FindGameObjectWithTag("OOL");
+        
         var borders = GameObject.FindGameObjectsWithTag("Border");
-        OutOfLivesUI.SetActive(false);
+        
         
 
         _dieColliders = new DieController[borders.Length];
@@ -41,8 +41,7 @@ public class SceneController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         else
         {
-            heartsUIManager.UpdateUI();
-            OutOfLivesUI.SetActive(true);
+            heartsUIManager.UpdateUI();           
         }
     }
 
