@@ -10,17 +10,23 @@ public class DieController : MonoBehaviour
     private Player _cubeController;
     private Rigidbody _playerRigidbody;
     private AudioManager audioManager;
+    
 
     private bool isDead= false;
 
     private void Start()
     {
         isDead = false;
+       
         _cubeController = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         _playerRigidbody = _cubeController.GetComponent<Rigidbody>();
         audioManager = FindObjectOfType<AudioManager>();
+
+
+        
     }
 
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -28,6 +34,8 @@ public class DieController : MonoBehaviour
             if (!isDead)
             {
                 isDead = true;
+
+                
                 StartCoroutine(DieAndThenIvokeRestartScene());
             }       
                 
@@ -40,8 +48,10 @@ public class DieController : MonoBehaviour
         audioManager.Play("FailSound");
         PlayerHealthController.Instance.SetPlayerHealth(-1);
         yield return new WaitForSeconds(1);
-        
+ 
         OnPlayerCollided?.Invoke();
+        
+        
     }
 
 }

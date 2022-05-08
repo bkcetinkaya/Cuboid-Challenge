@@ -36,15 +36,12 @@ public class WinMenuController : MonoBehaviour
 
             if (item.gameObject.CompareTag("WinMenu"))
             {
-                Debug.Log("Yarrak");
+                
                 continue;
             }
 
-                item.gameObject.SetActive(false);
-                       
-        }
-
-        
+                item.gameObject.SetActive(false);                     
+        }      
     }
 
     public void ActivateWinMenuContent()
