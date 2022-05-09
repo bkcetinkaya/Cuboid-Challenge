@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
+  m_IndirectSpecularColor: {r: 0.2850269, g: 0.28668398, b: 0.3498458, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -228,7 +228,6 @@ GameObject:
   m_Component:
   - component: {fileID: 176195586}
   - component: {fileID: 176195588}
-  - component: {fileID: 176195587}
   m_Layer: 0
   m_Name: Border
   m_TagString: Border
@@ -250,18 +249,6 @@ Transform:
   m_Father: {fileID: 2059084822}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &176195587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176195585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0023278280933634e8b7cef6ece4cfef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &176195588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -691,7 +678,6 @@ GameObject:
   m_Component:
   - component: {fileID: 996862123}
   - component: {fileID: 996862125}
-  - component: {fileID: 996862124}
   m_Layer: 0
   m_Name: Border
   m_TagString: Border
@@ -713,18 +699,6 @@ Transform:
   m_Father: {fileID: 2059084822}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &996862124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996862122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0023278280933634e8b7cef6ece4cfef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &996862125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1130,7 +1104,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1385809285}
   - component: {fileID: 1385809287}
-  - component: {fileID: 1385809286}
   m_Layer: 0
   m_Name: Border (1)
   m_TagString: Border
@@ -1152,18 +1125,6 @@ Transform:
   m_Father: {fileID: 2059084822}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1385809286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385809284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0023278280933634e8b7cef6ece4cfef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1385809287
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1187,7 +1148,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1554211031}
   - component: {fileID: 1554211033}
-  - component: {fileID: 1554211032}
   m_Layer: 0
   m_Name: Border
   m_TagString: Border
@@ -1209,18 +1169,6 @@ Transform:
   m_Father: {fileID: 2059084822}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1554211032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1554211030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0023278280933634e8b7cef6ece4cfef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1554211033
 BoxCollider:
   m_ObjectHideFlags: 0

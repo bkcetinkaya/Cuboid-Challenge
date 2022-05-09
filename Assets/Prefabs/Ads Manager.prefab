@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3919076325948468307}
   m_Layer: 0
   m_Name: Ads Manager
-  m_TagString: Untagged
+  m_TagString: Ads Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

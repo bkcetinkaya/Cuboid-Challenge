@@ -6,33 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField]
-    private DieController[] _dieColliders;
-    
+  
+    private PlayerDieController playerDieController;
     private HeartsUIManager heartsUIManager;
+
+    private AdsManager adsManager;
 
     private void Start()
     {
-
+        adsManager = GameObject.FindGameObjectWithTag("Ads Manager").GetComponent<AdsManager>();
         heartsUIManager = GameObject.FindGameObjectWithTag("HeartsUIManager").GetComponent<HeartsUIManager>();
-        
+        playerDieController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDieController>();
         var borders = GameObject.FindGameObjectsWithTag("Border");
-        
-        
 
-        _dieColliders = new DieController[borders.Length];
-
-        for (int i = 0; i < borders.Length; i++)
-        {
-            _dieColliders[i] = borders[i].GetComponent<DieController>();
-        }
-
-        for (int i = 0; i < _dieColliders.Length; i++)
-        {
-            _dieColliders[i].OnPlayerCollided += RestartScene;
-
-        }
-    
+        playerDieController.OnPlayerDied += RestartScene;
+        adsManager.OnRewardClaimed += RestartScene;
     }
 
     private void RestartScene()

@@ -6,34 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class OutOfLivesUIManager : MonoBehaviour
 {
-    private DieController _dieController;
-
+    private PlayerDieController playerDieController;
+    private AdsManager adsManager;
     private string _currentSceneName;
 
-
-    private void Awake()
-    {
-
-        _currentSceneName = SceneManager.GetActiveScene().name;
-        if (!_currentSceneName.Equals("LevelsMenu") && !_currentSceneName.Equals("Shop Menu"))
-        {
-            _dieController = GameObject.FindGameObjectWithTag("Border").GetComponent<DieController>();
-            _dieController.OnPlayerDied += ShowOutOfLivesUI;
-        }
-    }
     private void Start()
     {
-        
+        playerDieController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDieController>();
+        adsManager = GameObject.FindGameObjectWithTag("Ads Manager").GetComponent<AdsManager>();
 
-        
-        
-        if (isPlayerHpZero() && !_currentSceneName.Equals("LevelsMenu") && _currentSceneName.Equals("Shop Menu"))
-        {
-            
+        if (isPlayerHpZero())
+        {          
             ShowOutOfLivesUI();
         }
 
         HideUI();
+
+        playerDieController.OnPlayerHasNoHp += ShowOutOfLivesUI;
+        adsManager.OnRewardClaimed += HideUI;
     }
 
     private void HideUI()

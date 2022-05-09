@@ -10,7 +10,8 @@ public class AdsManager : MonoBehaviour
 
     private RewardedAd rewardedAd;
     private HeartsUIManager heartsUIManager;
- 
+
+    public event Action OnRewardClaimed;
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +42,10 @@ public class AdsManager : MonoBehaviour
         string type = args.Type;
         double amount = args.Amount;
 
+       
         PlayerHealthController.Instance.SetPlayerHealth((int)amount);
         heartsUIManager.UpdateUI();
+        OnRewardClaimed?.Invoke();
     }
 
     public void ShowAd()

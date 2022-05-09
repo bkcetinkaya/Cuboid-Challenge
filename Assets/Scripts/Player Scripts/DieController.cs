@@ -11,10 +11,6 @@ public class DieController : MonoBehaviour
     private Rigidbody _playerRigidbody;
     private AudioManager audioManager;
 
-    public event Action OnPlayerDied;
-
-    private int _health;
-
     private bool isDead= false;
 
     private void Start()
@@ -50,14 +46,6 @@ public class DieController : MonoBehaviour
         _playerRigidbody.isKinematic = false;
         audioManager.Play("FailSound");
         PlayerHealthController.Instance.SetPlayerHealth(-1);
-
-        _health = PlayerHealthController.Instance.GetPlayerHealth();
-        if (_health == 0)
-        {
-            OnPlayerDied?.Invoke();
-
-        }
-
         yield return new WaitForSeconds(1);
 
        
