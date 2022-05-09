@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class WinMenuController : MonoBehaviour
 {
 
-    [SerializeField]
+    
     private WinController winController;
     [SerializeField]
     private TextMeshProUGUI _MoneyEarnedText;
@@ -25,7 +25,9 @@ public class WinMenuController : MonoBehaviour
         winController = GameObject.FindGameObjectWithTag("WinController").GetComponent<WinController>();
         winController.OnPlayerCollided += DisplayWinMenu;
         sceneName = SceneManager.GetActiveScene().name;
+        gameObject.SetActive(true);
         DisableWinMenuContent();
+        
     }
 
   

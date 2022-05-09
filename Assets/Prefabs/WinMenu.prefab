@@ -270,7 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72fce679c3882a4a8f067f566bf1db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winController: {fileID: 0}
   _MoneyEarnedText: {fileID: 6505487660653273517}
   _LevelCompledetText: {fileID: 6505487660939743670}
 --- !u!1 &6505487660167164296
@@ -507,7 +506,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7573312709908005560, guid: 42d5d47d70058304d8b3429496c56275, type: 3}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: NextLevel
         m_Mode: 1

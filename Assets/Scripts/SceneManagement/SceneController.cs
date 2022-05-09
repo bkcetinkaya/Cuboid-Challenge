@@ -57,8 +57,14 @@ public class SceneController : MonoBehaviour
 
     public void LoadLevelWithName(string levelName)
     {
-        if (CheckIfPlayerHasEnoughHP())
+        if(levelName.Equals("LevelsMenu") || levelName.Equals("Shop Menu"))
+        {
             SceneManager.LoadScene(levelName);
+            return;
+        }
+
+        if (CheckIfPlayerHasEnoughHP())
+             SceneManager.LoadScene(levelName);
     }
 
     private bool CheckIfPlayerHasEnoughHP()
