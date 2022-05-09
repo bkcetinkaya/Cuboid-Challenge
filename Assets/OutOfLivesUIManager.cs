@@ -10,6 +10,8 @@ public class OutOfLivesUIManager : MonoBehaviour
     private AdsManager adsManager;
     private string _currentSceneName;
 
+
+    
     private void Start()
     {
         playerDieController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDieController>();

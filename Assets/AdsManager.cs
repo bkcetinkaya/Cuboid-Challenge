@@ -4,12 +4,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AdsManager : MonoBehaviour
 {
 
     private RewardedAd rewardedAd;
     private HeartsUIManager heartsUIManager;
+  
 
     public event Action OnRewardClaimed;
 
@@ -18,9 +20,12 @@ public class AdsManager : MonoBehaviour
     {
 
         heartsUIManager = GameObject.FindGameObjectWithTag("HeartsUIManager").GetComponent<HeartsUIManager>();
+        ;
         rewardedAd = new RewardedAd("ca-app-pub-3940256099942544/5224354917");
         rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+
+        LoadAd();
         
     }
 
@@ -49,11 +54,15 @@ public class AdsManager : MonoBehaviour
     }
 
     public void ShowAd()
-    {
-        LoadAd();
+    {   
 
         if (rewardedAd.IsLoaded())
         {
+            rewardedAd.Show();
+        }
+        else
+        {
+            LoadAd();
             rewardedAd.Show();
         }
     }

@@ -28,6 +28,7 @@ TagManager:
   - HeartsUIManager
   - OOL
   - Ads Manager
+  - Watch Ad Button
   layers:
   - Default
   - TransparentFX

@@ -10496,6 +10496,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1819347639917856049, guid: d54284b2cce68a64f9af0c824f050e1f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowAd
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819347639917856049, guid: d54284b2cce68a64f9af0c824f050e1f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AdsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819347639917856049, guid: d54284b2cce68a64f9af0c824f050e1f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1819347641782246117, guid: d54284b2cce68a64f9af0c824f050e1f, type: 3}
       propertyPath: m_Name
       value: OutOfLivesMenu
@@ -10586,25 +10598,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54284b2cce68a64f9af0c824f050e1f, type: 3}
---- !u!1 &8280589931016759986 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1819347641782246117, guid: d54284b2cce68a64f9af0c824f050e1f, type: 3}
-  m_PrefabInstance: {fileID: 7770133916522786903}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8280589931016759985 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1819347641782246118, guid: d54284b2cce68a64f9af0c824f050e1f, type: 3}
   m_PrefabInstance: {fileID: 7770133916522786903}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2890657885270105625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8280589931016759986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff315aed933956c46b1c39b8184d9f1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
