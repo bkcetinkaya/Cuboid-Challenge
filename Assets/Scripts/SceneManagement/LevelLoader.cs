@@ -10,9 +10,23 @@ public class LevelLoader : MonoBehaviour
     [SerializeField]
     private Button[] levelButtons;
 
+    private OutOfLivesUIManager OutOfLivesUIManager;
+
     private void Start()
     {
         GetLevelStates();
+
+        try
+        {
+            OutOfLivesUIManager = GameObject.FindGameObjectWithTag("OOL").GetComponent<OutOfLivesUIManager>();
+        }
+        catch (Exception e)
+        {
+
+            Debug.Log(e);
+        }
+       
+        
     }
 
     private void GetLevelStates()
@@ -53,6 +67,14 @@ public class LevelLoader : MonoBehaviour
 
         if(CheckIfPlayerHasEnoughHP())
             SceneManager.LoadScene(index);
+        else
+        {
+            if(OutOfLivesUIManager != null)
+            {
+                OutOfLivesUIManager.ShowOutOfLivesUI();
+            }
+            
+        }
     }
 
     private bool CheckIfPlayerHasEnoughHP()

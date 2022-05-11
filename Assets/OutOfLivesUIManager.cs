@@ -28,7 +28,7 @@ public class OutOfLivesUIManager : MonoBehaviour
         adsManager.OnRewardClaimed += HideUI;
     }
 
-    private void HideUI()
+    public void HideUI()
     {
         foreach (Transform item in transform)
         {
@@ -57,7 +57,7 @@ public class OutOfLivesUIManager : MonoBehaviour
         return false;
     }
 
-    private void ShowOutOfLivesUI()
+    public void ShowOutOfLivesUI()
     {
         foreach (Transform item in transform)
         {

@@ -16,14 +16,10 @@ public class HeartsUIManager : MonoBehaviour
     private void Start()
     {
         NotEnoughHPUI.SetActive(true);
-        UpdateUI();
-
-
-        
+        UpdateUI();       
     }
 
-   
-
+ 
     public void UpdateUI()
     {
         ResetUI();

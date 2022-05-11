@@ -29,7 +29,6 @@ public class PlayerDieController : MonoBehaviour
             {
                 isDead = true;
 
-
                 StartCoroutine(DieAndThenIvokeRestartScene());
             }
         }
@@ -40,13 +39,11 @@ public class PlayerDieController : MonoBehaviour
         _playerRigidbody.isKinematic = false;
         audioManager.Play("FailSound");
         PlayerHealthController.Instance.SetPlayerHealth(-1);
-
         
         yield return new WaitForSeconds(1);
 
         ChekIfPlayerHasZeroHp();
         OnPlayerDied?.Invoke();
-
 
     }
 

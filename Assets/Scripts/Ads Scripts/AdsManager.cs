@@ -20,7 +20,9 @@ public class AdsManager : MonoBehaviour
     {
 
         heartsUIManager = GameObject.FindGameObjectWithTag("HeartsUIManager").GetComponent<HeartsUIManager>();
-        ;
+        
+        
+
         rewardedAd = new RewardedAd("ca-app-pub-3940256099942544/5224354917");
         rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
