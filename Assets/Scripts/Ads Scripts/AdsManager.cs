@@ -23,7 +23,7 @@ public class AdsManager : MonoBehaviour
         
         
 
-        rewardedAd = new RewardedAd("ca-app-pub-3940256099942544/5224354917");
+        rewardedAd = new RewardedAd("ca-app-pub-7363838760234979/8824146077");
         rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
 
