@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Height: 0.026799725
+    - Height: 2.6
     - Vector1_377065c442a14addb0897687a7b4fd31: 2.6
     - Vector1_80c155f814dc45a6a597eaa19831249c: 0.1
     - Vector1_c95f7d39f33b444da77923803ba6a1ec: 0.08
