@@ -19,16 +19,23 @@ public class AdsManager : MonoBehaviour
     void Start()
     {
 
-        heartsUIManager = GameObject.FindGameObjectWithTag("HeartsUIManager").GetComponent<HeartsUIManager>();
-        
-        
+        MobileAds.Initialize(initStatus => { });
 
-        rewardedAd = new RewardedAd("ca-app-pub-7363838760234979/8824146077");
+        heartsUIManager = GameObject.FindGameObjectWithTag("HeartsUIManager").GetComponent<HeartsUIManager>();
+
+        CreateAndLoadNewAd();
+
+       
+
+    }
+
+    private void CreateAndLoadNewAd()
+    {
+        rewardedAd = new RewardedAd("ca-app-pub-3940256099942544/5224354917");
         rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
 
         LoadAd();
-        
     }
 
     private void LoadAd()
@@ -53,6 +60,10 @@ public class AdsManager : MonoBehaviour
         PlayerHealthController.Instance.SetPlayerHealth((int)amount);
         heartsUIManager.UpdateUI();
         OnRewardClaimed?.Invoke();
+    }
+    public void HandleRewardedAdClosed(object sender, EventArgs args)
+    {
+        CreateAndLoadNewAd();
     }
 
     public void ShowAd()
