@@ -8,7 +8,7 @@ public class AdsButton : MonoBehaviour
     private AdsManager adsManager;
     private Button adsButton;
 
-    private void OnEnable()
+    private void Start()
     {
         adsManager = GameObject.FindGameObjectWithTag("Ads Manager").GetComponent<AdsManager>();
         adsButton = GetComponent<Button>();

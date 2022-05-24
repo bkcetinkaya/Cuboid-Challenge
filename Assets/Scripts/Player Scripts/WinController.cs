@@ -13,7 +13,7 @@ public class WinController : MonoBehaviour
     private Collider _playerCollider;
     private LevelsManager _levelsManager;
     private PlayerMoneyController _playerMoneyController;
-    private AudioManager audioManager;
+    
 
 
     [SerializeField]
@@ -30,7 +30,7 @@ public class WinController : MonoBehaviour
         _levelsManager = GameObject.FindGameObjectWithTag("LevelsManager").GetComponent<LevelsManager>();
         _playerMoneyController = GameObject.FindGameObjectWithTag("PlayerMoneyController").GetComponent<PlayerMoneyController>();
         dissolveMaterial.SetFloat("Height", 2.6f);
-        audioManager = FindObjectOfType<AudioManager>();
+     
         Color color = _cubeController.GetComponent<Renderer>().material.color;
         dissolveMaterial.SetColor("ColorVal", color);
         
@@ -87,7 +87,7 @@ public class WinController : MonoBehaviour
         // Disabling isKinematic to disable movements input
         _playerRigidbody.isKinematic = false;
 
-        audioManager.Play("WinSound");
+        AudioManager.Instance.Play("WinSound");
 
         yield return new WaitForSeconds(1.5f);
         

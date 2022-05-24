@@ -5,20 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class HorizontalTouchButton : MonoBehaviour
 {
-    
-    DieController dieController;
+
+    PlayerDieController playerDieController;
 
 
     private void Start()
     {
-        dieController = GameObject.FindGameObjectWithTag("Border").GetComponent<DieController>();
+        playerDieController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDieController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("WinCollider"))
         {
-            StartCoroutine(dieController.DieAndThenIvokeRestartScene());
+            StartCoroutine(playerDieController.DieAndThenIvokeRestartScene());
         }
     }
 }

@@ -10,15 +10,12 @@ public class CubeButtonController : MonoBehaviour
     [SerializeField]
     private Transform dieColliderLocatedOnBridge;
 
-    private AudioManager audioManager;
+    
 
     private bool isPlayerDied;
     bool isBridgeActive;
 
-    private void Start()
-    {
-        audioManager = FindObjectOfType<AudioManager>();
-    }
+   
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,8 +32,8 @@ public class CubeButtonController : MonoBehaviour
             {
                 if (isPlayerDied == false)
                 {
-                    audioManager.Play("ButtonPressSound");
-                    ToggleBridge();
+                AudioManager.Instance.Play("ButtonPressSound");
+                ToggleBridge();
                 }
 
 

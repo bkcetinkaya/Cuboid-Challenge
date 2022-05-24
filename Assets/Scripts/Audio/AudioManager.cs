@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance { get; private set; }
 
     public Sound[] sounds;
 
@@ -12,14 +13,29 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+
+        if (Instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         DontDestroyOnLoad(this);
 
+        
+    }
+
+    private void Start()
+    {
         foreach (Sound sound in sounds)
         {
-            sound.source=gameObject.AddComponent<AudioSource>();
+            sound.source = gameObject.AddComponent<AudioSource>();
             sound.source.clip = sound.clip;
 
-            sound.source.volume = sound.volume;  
+            sound.source.volume = sound.volume;
         }
     }
 

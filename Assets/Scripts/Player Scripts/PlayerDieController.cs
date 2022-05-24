@@ -10,14 +10,14 @@ public class PlayerDieController : MonoBehaviour
     public event Action OnPlayerDied;
     public event Action OnPlayerHasNoHp;
 
-    private AudioManager audioManager;
+   
 
     private bool isDead = false;
 
     private void Start()
     {
         _playerRigidbody = GetComponent<Rigidbody>();
-        audioManager = FindObjectOfType<AudioManager>();
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,7 +37,7 @@ public class PlayerDieController : MonoBehaviour
     public IEnumerator DieAndThenIvokeRestartScene()
     {
         _playerRigidbody.isKinematic = false;
-        audioManager.Play("FailSound");
+        AudioManager.Instance.Play("FailSound");
         PlayerHealthController.Instance.SetPlayerHealth(-1);
         
         yield return new WaitForSeconds(1);

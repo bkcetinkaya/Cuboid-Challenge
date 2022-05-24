@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 	public float rotationPeriod = 0.3f;
 	private Rigidbody _rigidbody;
 
-	private AudioManager audioManager;
+	
 
 	Vector3 scale;							
 
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
 	
 		scale = transform.lossyScale;
 		_rigidbody = GetComponent<Rigidbody>();
-		audioManager = FindObjectOfType<AudioManager>();
+		
 		UpdatePlayerSkin();
 
 	}
@@ -56,26 +56,26 @@ public class Player : MonoBehaviour
 	public void MoveForward()
     {
 		x = 1;
-		audioManager.Play("PlayerMoveSound");	
+		AudioManager.Instance.Play("PlayerMoveSound");
 	}
 
 	public void MoveBackward()
 	{
 		x = -1;
-		audioManager.Play("PlayerMoveSound");
+		AudioManager.Instance.Play("PlayerMoveSound");
 
 	}
 
 	public void MoveRight()
 	{
 		y = -1;
-		audioManager.Play("PlayerMoveSound");
+		AudioManager.Instance.Play("PlayerMoveSound");
 	}
 
 	public void MoveLeft()
 	{
 		y = +1;
-		audioManager.Play("PlayerMoveSound");
+		AudioManager.Instance.Play("PlayerMoveSound");
 
 	}
 
